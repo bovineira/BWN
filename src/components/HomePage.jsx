@@ -12,7 +12,8 @@ import {
   CheckCircle,
   MapPin,
   Users,
-  Target
+  Target,
+  MessageCircle
 } from 'lucide-react';
 import FormularioBWN from './FormularioBWN';
 
@@ -242,6 +243,27 @@ const HomePage = () => {
           style={{ opacity, y }}
           className="relative z-10 max-w-5xl mx-auto text-center"
         >
+          {/* Logo BWN em Destaque */}
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-8 flex justify-center"
+          >
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-bwn-orange/20 rounded-full blur-2xl opacity-50" />
+              <img
+                src="/image/bwn_certo.png"
+                alt="Logo BWN"
+                className="h-24 md:h-32 lg:h-40 w-auto object-contain relative z-10 drop-shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -569,6 +591,93 @@ const HomePage = () => {
               `}</style>
               <FormularioBWN />
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Seção Alternativa - WhatsApp Direto */}
+      <section className="py-20 px-4 relative">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-strong rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
+          >
+            {/* Borda decorativa */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-bwn-orange/50 to-transparent" />
+            
+            {/* Efeito de brilho */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500/20 via-transparent to-green-500/20 rounded-3xl blur-sm opacity-30 -z-10" />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 mb-6 glow-orange">
+                <MessageCircle className="text-white" size={40} />
+              </div>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+            >
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Prefere Falar Direto?
+              </span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+            >
+              Se você prefere uma conversa rápida, fale conosco diretamente pelo WhatsApp.{' '}
+              <span className="text-bwn-orange font-semibold">
+                Respondemos em até 5 minutos!
+              </span>
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              {/* ATENÇÃO: Substitua "5571999999999" pelo número real do WhatsApp da BWN (formato: 5571XXXXXXXXX sem espaços ou caracteres especiais) */}
+              <motion.a
+                href="https://wa.me/5571999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20BWN"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(37, 211, 102, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold px-8 py-4 rounded-xl text-lg glow-orange hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300"
+              >
+                <MessageCircle size={24} />
+                Falar no WhatsApp Agora
+                <ArrowRight size={20} />
+              </motion.a>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-sm text-gray-400 mt-6"
+            >
+              Ou continue preenchendo o formulário acima para uma análise mais detalhada
+            </motion.p>
           </motion.div>
         </div>
       </section>
