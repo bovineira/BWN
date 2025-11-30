@@ -375,7 +375,7 @@ const HomePage = () => {
                   Conhecemos a cultura, os desafios e as oportunidades que fazem sua empresa única.
                 </p>
                 
-                <div className="space-y-4">
+                <div className="space-y-4 mb-8">
                   <div className="flex items-start gap-3">
                     <CheckCircle className="text-bwn-orange flex-shrink-0 mt-1" size={20} />
                     <p className="text-gray-300">
@@ -395,6 +395,24 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
+
+                {/* Botão CTA - Terceira Dobra */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <motion.button
+                    onClick={() => scrollToSection('formulario')}
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold px-8 py-4 rounded-xl flex items-center gap-2 glow-orange hover:glow-orange-strong transition-all duration-300"
+                  >
+                    Agendar Consultoria Gratuita
+                    <ArrowRight size={20} />
+                  </motion.button>
+                </motion.div>
               </div>
               
               <motion.div
@@ -455,7 +473,7 @@ const HomePage = () => {
             <p className="text-xl text-gray-300 mb-8">
               Já escalamos mais de <span className="text-bwn-orange font-bold">30 mil reais</span> para nossos clientes
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 mb-8">
               <div className="glass-card rounded-xl p-6 border-white/10">
                 <div className="text-3xl font-bold text-white mb-2">5+</div>
                 <div className="text-gray-400">Serviços Integrados</div>
@@ -469,6 +487,25 @@ const HomePage = () => {
                 <div className="text-gray-400">Suporte Contínuo</div>
               </div>
             </div>
+
+            {/* Botão CTA - Quarta Dobra */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex justify-center"
+            >
+              <motion.button
+                onClick={() => scrollToSection('formulario')}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold px-8 py-4 rounded-xl flex items-center gap-2 glow-orange hover:glow-orange-strong transition-all duration-300"
+              >
+                Quero Escalar Minha Empresa
+                <ArrowRight size={20} />
+              </motion.button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -502,17 +539,37 @@ const HomePage = () => {
             Ele contém o formulário multi-etapas completo.
             ============================================
           */}
-          <div className="relative">
-            <style>{`
-              #formulario [class*="min-h-screen"] {
-                min-height: auto !important;
-              }
-              #formulario [class*="animated-gradient"] {
-                background: transparent !important;
-              }
-            `}</style>
-            <FormularioBWN />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            {/* Container com destaque visual para o formulário */}
+            <div className="relative glass-strong rounded-3xl p-6 md:p-8 border border-bwn-orange/30 bg-gradient-to-br from-black/40 to-black/60 backdrop-blur-xl shadow-2xl">
+              {/* Borda decorativa superior */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-bwn-orange/60 to-transparent" />
+              
+              {/* Efeito de brilho sutil */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-bwn-orange/20 via-transparent to-bwn-orange/20 rounded-3xl blur-sm opacity-50 -z-10" />
+              
+              <style>{`
+                #formulario [class*="min-h-screen"] {
+                  min-height: auto !important;
+                }
+                #formulario [class*="animated-gradient"] {
+                  background: transparent !important;
+                }
+                #formulario [class*="glass-strong"] {
+                  background: transparent !important;
+                  border: none !important;
+                  box-shadow: none !important;
+                }
+              `}</style>
+              <FormularioBWN />
+            </div>
+          </motion.div>
         </div>
       </section>
 

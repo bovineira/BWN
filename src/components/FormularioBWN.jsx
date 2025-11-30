@@ -8,6 +8,7 @@ const FormularioBWN = () => {
     nomeEmpresa: '',
     nomeResponsavel: '',
     whatsapp: '',
+    nicho: '',
     servicos: [],
     orcamento: '',
   });
@@ -54,7 +55,8 @@ const FormularioBWN = () => {
         return (
           formData.nomeEmpresa.trim() !== '' &&
           formData.nomeResponsavel.trim() !== '' &&
-          formData.whatsapp.trim() !== ''
+          formData.whatsapp.trim() !== '' &&
+          formData.nicho.trim() !== ''
         );
       case 2:
         return formData.servicos.length > 0;
@@ -222,6 +224,20 @@ const FormularioBWN = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
                       placeholder="(71) 99999-9999"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-200 mb-2">
+                      Nicho
+                    </label>
+                    <input
+                      type="text"
+                      name="nicho"
+                      value={formData.nicho}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
+                      placeholder="Ex: E-commerce, Saúde, Educação, etc."
                     />
                   </div>
                 </div>
