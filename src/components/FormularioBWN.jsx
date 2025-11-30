@@ -84,8 +84,38 @@ const FormularioBWN = () => {
   const progressPercentage = (step / totalSteps) * 100;
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl">
+    <div className="min-h-screen animated-gradient flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Efeitos de fundo decorativos */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-bwn-orange/10 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-bwn-orange/5 rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+
+      <div className="w-full max-w-2xl relative z-10">
         {/* Logo BWN */}
         <motion.div
           className="flex justify-center mb-8"
@@ -93,35 +123,42 @@ const FormularioBWN = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <img
-            src="/image/bwn_certo.png"
-            alt="Logo BWN"
-            className="h-20 md:h-24 w-auto object-contain"
-          />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <img
+              src="/image/bwn_certo.png"
+              alt="Logo BWN"
+              className="h-20 md:h-24 w-auto object-contain drop-shadow-2xl"
+            />
+          </motion.div>
         </motion.div>
 
         {/* Barra de Progresso */}
-        <div className="mb-8">
-          <div className="h-1 bg-gray-800 rounded-full overflow-hidden">
+        <div className="mb-8 glass rounded-full p-1">
+          <div className="h-2 bg-black/30 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-bwn-orange"
+              className="h-full bg-gradient-to-r from-bwn-orange to-orange-400 rounded-full glow-orange"
               initial={{ width: 0 }}
               animate={{ width: `${progressPercentage}%` }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             />
           </div>
-          <div className="mt-2 text-sm text-gray-400 text-center">
+          <div className="mt-3 text-sm text-gray-300 text-center font-medium">
             Etapa {step} de {totalSteps}
           </div>
         </div>
 
         {/* Container do Formulário */}
         <motion.div
-          className="bg-bwn-dark border border-gray-800 rounded-2xl p-6 md:p-10 shadow-2xl"
+          className="glass-strong rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
+          {/* Brilho sutil no topo */}
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-bwn-orange/50 to-transparent" />
           <AnimatePresence mode="wait">
             {/* Etapa 1: Dados Básicos */}
             {step === 1 && (
@@ -134,19 +171,19 @@ const FormularioBWN = () => {
                 className="space-y-6"
               >
                 <div className="text-center mb-8">
-                  <h1 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  <h1 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
                     Escale sua empresa na Bahia com a BWN
                   </h1>
-                  <p className="text-gray-400 text-lg">
+                  <p className="text-gray-300 text-lg">
                     Junte-se às empresas que já faturaram mais de{' '}
-                    <span className="text-bwn-orange font-semibold">R$ 30k</span>{' '}
+                    <span className="text-bwn-orange font-bold bg-gradient-to-r from-bwn-orange to-orange-400 bg-clip-text text-transparent">R$ 30k</span>{' '}
                     conosco
                   </p>
                 </div>
 
                 <div className="space-y-5">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-200 mb-2">
                       Nome da Empresa
                     </label>
                     <input
@@ -154,13 +191,13 @@ const FormularioBWN = () => {
                       name="nomeEmpresa"
                       value={formData.nomeEmpresa}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/20 text-white transition-all duration-300"
+                      className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
                       placeholder="Digite o nome da sua empresa"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-200 mb-2">
                       Nome do Responsável
                     </label>
                     <input
@@ -168,13 +205,13 @@ const FormularioBWN = () => {
                       name="nomeResponsavel"
                       value={formData.nomeResponsavel}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/20 text-white transition-all duration-300"
+                      className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
                       placeholder="Seu nome completo"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-200 mb-2">
                       WhatsApp
                     </label>
                     <input
@@ -182,7 +219,7 @@ const FormularioBWN = () => {
                       name="whatsapp"
                       value={formData.whatsapp}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/20 text-white transition-all duration-300"
+                      className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
                       placeholder="(71) 99999-9999"
                     />
                   </div>
@@ -191,9 +228,9 @@ const FormularioBWN = () => {
                 <motion.button
                   onClick={handleNext}
                   disabled={!validateStep()}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-bwn-orange text-black font-bold py-4 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-lg hover:shadow-bwn-orange/50"
+                  className="w-full bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 glow-orange hover:glow-orange-strong"
                 >
                   Próximo
                   <ArrowRight size={20} />
@@ -212,10 +249,10 @@ const FormularioBWN = () => {
                 className="space-y-6"
               >
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     O que sua empresa precisa hoje?
                   </h2>
-                  <p className="text-gray-400">
+                  <p className="text-gray-300">
                     Selecione um ou mais serviços
                   </p>
                 </div>
@@ -227,12 +264,12 @@ const FormularioBWN = () => {
                       <motion.button
                         key={servico.id}
                         onClick={() => toggleServico(servico.id)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`p-5 rounded-xl border-2 transition-all duration-300 text-left ${
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.97 }}
+                        className={`p-5 rounded-2xl border transition-all duration-300 text-left ${
                           isSelected
-                            ? 'border-bwn-orange bg-bwn-orange/10 shadow-lg shadow-bwn-orange/20'
-                            : 'border-gray-700 bg-black/30 hover:border-gray-600'
+                            ? 'border-bwn-orange/50 glass-card bg-bwn-orange/10 shadow-lg shadow-bwn-orange/30 glow-orange'
+                            : 'border-white/10 glass-card hover:border-white/20 hover:bg-white/5'
                         }`}
                       >
                         <div className="flex items-center gap-3">
@@ -258,7 +295,7 @@ const FormularioBWN = () => {
                     onClick={handleBack}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-gray-800 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-700 transition-all duration-300"
+                    className="flex-1 glass border-white/10 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-white/5 hover:border-white/20 transition-all duration-300"
                   >
                     <ArrowLeft size={20} />
                     Voltar
@@ -266,9 +303,9 @@ const FormularioBWN = () => {
                   <motion.button
                     onClick={handleNext}
                     disabled={!validateStep()}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-bwn-orange text-black font-bold py-4 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-lg hover:shadow-bwn-orange/50"
+                    className="flex-1 bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 glow-orange hover:glow-orange-strong"
                   >
                     Próximo
                     <ArrowRight size={20} />
@@ -288,10 +325,10 @@ const FormularioBWN = () => {
                 className="space-y-6"
               >
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     Qual sua meta de investimento mensal?
                   </h2>
-                  <p className="text-gray-400">
+                  <p className="text-gray-300">
                     Selecione a faixa de investimento
                   </p>
                 </div>
@@ -303,12 +340,12 @@ const FormularioBWN = () => {
                       <motion.button
                         key={orcamento}
                         onClick={() => handleOrcamentoChange(orcamento)}
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`w-full p-4 rounded-xl border-2 transition-all duration-300 text-left ${
+                        className={`w-full p-4 rounded-2xl border transition-all duration-300 text-left ${
                           isSelected
-                            ? 'border-bwn-orange bg-bwn-orange/10 shadow-lg shadow-bwn-orange/20'
-                            : 'border-gray-700 bg-black/30 hover:border-gray-600'
+                            ? 'border-bwn-orange/50 glass-card bg-bwn-orange/10 shadow-lg shadow-bwn-orange/30 glow-orange'
+                            : 'border-white/10 glass-card hover:border-white/20 hover:bg-white/5'
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -337,7 +374,7 @@ const FormularioBWN = () => {
                     onClick={handleBack}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-gray-800 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-700 transition-all duration-300"
+                    className="flex-1 glass border-white/10 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-white/5 hover:border-white/20 transition-all duration-300"
                   >
                     <ArrowLeft size={20} />
                     Voltar
@@ -345,9 +382,9 @@ const FormularioBWN = () => {
                   <motion.button
                     onClick={handleNext}
                     disabled={!validateStep()}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex-1 bg-bwn-orange text-black font-bold py-4 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-lg hover:shadow-bwn-orange/50"
+                    className="flex-1 bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 glow-orange hover:glow-orange-strong"
                   >
                     Finalizar
                     <ArrowRight size={20} />
@@ -371,11 +408,11 @@ const FormularioBWN = () => {
                   transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
                   className="flex justify-center mb-6"
                 >
-                  <div className="w-24 h-24 rounded-full bg-bwn-orange/20 flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full glass-card border-bwn-orange/30 bg-bwn-orange/10 flex items-center justify-center glow-orange">
                     <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.4 }}
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: 0.4, type: 'spring', stiffness: 200 }}
                     >
                       <Check className="text-bwn-orange" size={48} strokeWidth={3} />
                     </motion.div>
