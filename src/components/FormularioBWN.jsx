@@ -86,6 +86,20 @@ const FormularioBWN = () => {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="w-full max-w-2xl">
+        {/* Logo BWN */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <img
+            src="/image/bwn.jpg"
+            alt="Logo BWN"
+            className="h-20 md:h-24 w-auto object-contain"
+          />
+        </motion.div>
+
         {/* Barra de Progresso */}
         <div className="mb-8">
           <div className="h-1 bg-gray-800 rounded-full overflow-hidden">
