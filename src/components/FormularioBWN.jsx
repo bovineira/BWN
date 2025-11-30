@@ -94,7 +94,7 @@ const FormularioBWN = () => {
           transition={{ duration: 0.5 }}
         >
           <img
-            src="/image/bwn.jpg"
+            src="/image/bwn.png"
             alt="Logo BWN"
             className="h-20 md:h-24 w-auto object-contain"
           />
