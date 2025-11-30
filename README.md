@@ -2,6 +2,8 @@
 
 Formulário multi-etapas moderno e interativo desenvolvido para a BWN, agência de marketing digital focada em performance na Bahia.
 
+> **Última atualização:** Logo BWN adicionada ao formulário
+
 ## 🚀 Tecnologias Utilizadas
 
 - **React 18** - Biblioteca JavaScript para construção de interfaces
