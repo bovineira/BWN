@@ -20,6 +20,7 @@ const FormularioBWN = () => {
     { id: 'crm', nome: 'CRM', icon: '💼' },
     { id: 'social', nome: 'Social Media', icon: '📱' },
     { id: 'web', nome: 'Web Design', icon: '🎨' },
+    { id: 'nao_sei', nome: 'Não sei dizer', icon: '❓' },
   ];
 
   const orcamentos = [
