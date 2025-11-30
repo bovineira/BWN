@@ -630,9 +630,8 @@ const HomePage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 flex items-center justify-center gap-3"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
             >
-              <span className="text-4xl md:text-5xl lg:text-6xl">💬</span>
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Prefere Falar Direto?
               </span>
