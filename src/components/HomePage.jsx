@@ -656,9 +656,8 @@ const HomePage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              {/* ATENÇÃO: Substitua "5571999999999" pelo número real do WhatsApp da BWN (formato: 5571XXXXXXXXX sem espaços ou caracteres especiais) */}
               <motion.a
-                href="https://wa.me/5571999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20BWN"
+                href="https://wa.me/5571992091220?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20BWN"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(37, 211, 102, 0.5)" }}
