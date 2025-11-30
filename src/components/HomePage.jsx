@@ -13,7 +13,13 @@ import {
   MapPin,
   Users,
   Target,
-  MessageCircle
+  MessageCircle,
+  Brain,
+  BarChart3,
+  Zap,
+  Shield,
+  Sparkles,
+  Briefcase
 } from 'lucide-react';
 import FormularioBWN from './FormularioBWN';
 
@@ -42,39 +48,46 @@ const HomePage = () => {
 
   const servicos = [
     {
-      id: 'trafego',
-      nome: 'Tráfego Pago',
-      descricao: 'Ads que convertem',
+      id: 'midia',
+      nome: 'Mídia Paga orientada a ROI',
+      descricao: 'Google Ads, Meta, TikTok, LinkedIn com IA e otimização contínua',
       icon: TrendingUp,
       color: 'from-orange-500 to-red-500',
     },
     {
-      id: 'edicao',
-      nome: 'Edição de Vídeo',
-      descricao: 'Cortes virais e VSL',
-      icon: Video,
+      id: 'cro',
+      nome: 'CRO & Growth de Produto',
+      descricao: 'Testes A/B, UX writing, análise de funil e personalização com IA',
+      icon: BarChart3,
       color: 'from-purple-500 to-pink-500',
     },
     {
-      id: 'crm',
-      nome: 'CRM & Automação',
-      descricao: 'Gestão de leads',
+      id: 'analytics',
+      nome: 'Data Analytics & BI',
+      descricao: 'Dashboards, MMM, modelagem preditiva e atribuição',
       icon: Database,
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      id: 'social',
-      nome: 'Social Media',
-      descricao: 'Branding forte',
-      icon: Instagram,
-      color: 'from-pink-500 to-rose-500',
+      id: 'automacao',
+      nome: 'Automação & CRM',
+      descricao: 'Jornadas omnichannel, scoring preditivo e fidelização',
+      icon: Zap,
+      color: 'from-yellow-500 to-orange-500',
     },
     {
-      id: 'web',
-      nome: 'Web Design',
-      descricao: 'Sites rápidos',
-      icon: Globe,
-      color: 'from-green-500 to-emerald-500',
+      id: 'ia',
+      nome: 'Agentes de IA Operacionais',
+      descricao: 'Monitoramento 24/7, otimização autônoma e geração de criativos',
+      icon: Brain,
+      color: 'from-indigo-500 to-purple-500',
+    },
+    {
+      id: 'criativos',
+      nome: 'Conteúdo & Criativos com IA',
+      descricao: 'Geração em escala, variações multiformato e produção presencial',
+      icon: Sparkles,
+      color: 'from-pink-500 to-rose-500',
     },
   ];
 
@@ -271,11 +284,11 @@ const HomePage = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
             <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-              Escale sua Empresa na Bahia
+              Performance, Growth & IA
             </span>
             <br />
             <span className="bg-gradient-to-r from-bwn-orange to-orange-400 bg-clip-text text-transparent">
-              com Inteligência Digital
+              para marcas de qualquer setor
             </span>
           </motion.h1>
 
@@ -285,11 +298,11 @@ const HomePage = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            Tráfego, CRM e Design de alta performance.{' '}
+            Consultoria de marketing de performance orientada por dados e Inteligência Artificial.{' '}
             <span className="text-bwn-orange font-semibold">
-              Já geramos mais de R$ 30k em escala
+              Aceleramos crescimento por aquisição e retenção
             </span>{' '}
-            para nossos parceiros.
+            — de pequenas empresas a grandes marcas.
           </motion.p>
 
           <motion.div
@@ -326,7 +339,7 @@ const HomePage = () => {
               </span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Soluções integradas para escalar seu negócio digital
+              Atuamos como braço estratégico do seu negócio, combinando experimentação, automação e IA
             </p>
           </motion.div>
 
@@ -356,6 +369,143 @@ const HomePage = () => {
                 </motion.div>
               );
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Seção de Diferenciais */}
+      <section className="py-20 px-4 relative">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Por que escolher a BWN?
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Diferente de uma agência tradicional, atuamos como braço estratégico do seu negócio
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Target,
+                title: 'Cobrança baseada em performance',
+                desc: 'Só crescemos se você crescer. Nossos resultados são mensuráveis e transparentes.',
+                color: 'from-bwn-orange to-orange-500',
+              },
+              {
+                icon: BarChart3,
+                title: 'Dados no centro',
+                desc: 'Decisões guiadas por métricas, não por achismos. Analytics e BI integrados.',
+                color: 'from-blue-500 to-cyan-500',
+              },
+              {
+                icon: Brain,
+                title: 'IA aplicada de ponta a ponta',
+                desc: 'Do planejamento ao criativo, da operação à análise. Agentes autônomos 24/7.',
+                color: 'from-purple-500 to-pink-500',
+              },
+              {
+                icon: Database,
+                title: 'Transparência total',
+                desc: 'Dashboards em tempo real e rituais de otimização. Você vê tudo que acontece.',
+                color: 'from-green-500 to-emerald-500',
+              },
+              {
+                icon: Shield,
+                title: 'Compliance & Segurança',
+                desc: 'Práticas alinhadas à LGPD e padrões do mercado. Segurança em primeiro lugar.',
+                color: 'from-indigo-500 to-blue-500',
+              },
+              {
+                icon: Briefcase,
+                title: 'Experiência em mercados regulados',
+                desc: 'Jurídico, saúde, finanças — sem perder versatilidade para outros setores.',
+                color: 'from-yellow-500 to-orange-500',
+              },
+            ].map((diferencial, index) => {
+              const Icon = diferencial.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="glass-card rounded-2xl p-6 border-white/10 hover:border-bwn-orange/50 transition-all duration-300"
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${diferencial.color} flex items-center justify-center mb-4`}>
+                    <Icon className="text-white" size={24} />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 text-white">{diferencial.title}</h3>
+                  <p className="text-gray-400 text-sm">{diferencial.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Setores Atendidos */}
+      <section className="py-20 px-4 relative bg-black/30">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Para quem atendemos
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              De operações em início de tração a marcas em escala
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-strong rounded-3xl p-8 md:p-12"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {[
+                'E-commerce',
+                'Varejo',
+                'Serviços',
+                'Educação',
+                'Saúde',
+                'Jurídico',
+                'Indústria',
+                'Imobiliário',
+                'Fintechs',
+                'SaaS',
+              ].map((setor, index) => (
+                <motion.div
+                  key={setor}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  className="text-center p-4 rounded-xl bg-black/30 border border-white/10 hover:border-bwn-orange/50 hover:bg-bwn-orange/5 transition-all duration-300"
+                >
+                  <span className="text-white font-medium text-sm md:text-base">{setor}</span>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
