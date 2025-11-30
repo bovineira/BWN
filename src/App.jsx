@@ -1,7 +1,7 @@
-import FormularioBWN from './components/FormularioBWN';
+import HomePage from './components/HomePage';
 
 function App() {
-  return <FormularioBWN />;
+  return <HomePage />;
 }
 
 export default App;
