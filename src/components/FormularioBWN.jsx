@@ -21,6 +21,7 @@ const FormularioBWN = () => {
     { id: 'crm', nome: 'CRM', icon: '💼' },
     { id: 'social', nome: 'Social Media', icon: '📱' },
     { id: 'web', nome: 'Web Design', icon: '🎨' },
+    { id: 'agente_ia', nome: 'Agente de IA', icon: '🤖' },
     { id: 'nao_sei', nome: 'Não sei dizer', icon: '❓' },
   ];
 
