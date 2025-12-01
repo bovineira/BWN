@@ -303,18 +303,22 @@ const FormularioBWN = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {servicos.map((servico) => {
+                  {servicos.map((servico, index) => {
                     const isSelected = formData.servicos.includes(servico.id);
+                    const isLastItem = index === servicos.length - 1;
+                    const isOddCount = servicos.length % 2 !== 0;
                     return (
                       <motion.button
                         key={servico.id}
                         onClick={() => toggleServico(servico.id)}
                         whileHover={{ scale: 1.03, y: -2 }}
                         whileTap={{ scale: 0.97 }}
-                        className={`p-5 rounded-2xl border transition-all duration-300 text-left ${
+                        className={`p-5 rounded-2xl border transition-all duration-300 text-left w-full ${
                           isSelected
                             ? 'border-bwn-orange/50 glass-card bg-bwn-orange/10 shadow-lg shadow-bwn-orange/30 glow-orange'
                             : 'border-white/10 glass-card hover:border-white/20 hover:bg-white/5'
+                        } ${
+                          isLastItem && isOddCount ? 'sm:col-span-2 sm:mx-auto' : ''
                         }`}
                       >
                         <div className="flex items-center gap-3">
