@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, ArrowLeft, Sparkles } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft, Sparkles, Loader2 } from 'lucide-react';
 
 const FormularioBWN = () => {
   const [step, setStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     nomeEmpresa: '',
     nomeResponsavel: '',
@@ -110,9 +111,55 @@ const FormularioBWN = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log('Dados do formulário:', formData);
-    // Aqui você pode enviar os dados para uma API
+  const handleSubmit = async () => {
+    if (!validateStep()) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      // Mapear IDs de serviços para nomes legíveis
+      const servicosNomes = formData.servicos.map((servicoId) => {
+        const servico = servicos.find((s) => s.id === servicoId);
+        return servico ? servico.nome : servicoId;
+      });
+
+      // Preparar dados para envio
+      const dadosParaEnvio = {
+        nomeEmpresa: formData.nomeEmpresa,
+        nomeResponsavel: formData.nomeResponsavel,
+        whatsapp: formData.whatsapp,
+        nicho: formData.nicho,
+        servicos: servicosNomes.join(', '),
+        orcamento: formData.orcamento,
+      };
+
+      // Enviar para Formspree
+      const response = await fetch('https://formspree.io/f/mkgdbrkz', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dadosParaEnvio),
+      });
+
+      if (response.ok) {
+        // Sucesso - avançar para etapa de sucesso
+        setStep(4);
+      } else {
+        // Erro na resposta
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Erro ao enviar formulário');
+      }
+    } catch (error) {
+      // Erro na requisição ou na resposta
+      console.error('Erro ao enviar formulário:', error);
+      alert('Ops! Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const progressPercentage = (step / totalSteps) * 100;
@@ -436,14 +483,23 @@ const FormularioBWN = () => {
                     Voltar
                   </motion.button>
                   <motion.button
-                    onClick={handleNext}
-                    disabled={!validateStep()}
-                    whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
-                    whileTap={{ scale: 0.98 }}
+                    onClick={handleSubmit}
+                    disabled={!validateStep() || isLoading}
+                    whileHover={!isLoading ? { scale: 1.02, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" } : {}}
+                    whileTap={!isLoading ? { scale: 0.98 } : {}}
                     className="flex-1 bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 glow-orange hover:glow-orange-strong"
                   >
-                    Finalizar
-                    <ArrowRight size={20} />
+                    {isLoading ? (
+                      <>
+                        <Loader2 size={20} className="animate-spin" />
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        Finalizar
+                        <ArrowRight size={20} />
+                      </>
+                    )}
                   </motion.button>
                 </div>
               </motion.div>
