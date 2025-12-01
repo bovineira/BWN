@@ -36,6 +36,27 @@ const FormularioBWN = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleWhatsAppChange = (e) => {
+    let value = e.target.value;
+    // Remove tudo que não é número
+    value = value.replace(/\D/g, '');
+    // Limita a 11 dígitos (DDD + 9 dígitos)
+    value = value.slice(0, 11);
+    
+    // Aplica a formatação (XX) XXXXX-XXXX
+    if (value.length > 0) {
+      if (value.length <= 2) {
+        value = `(${value}`;
+      } else if (value.length <= 7) {
+        value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+      } else {
+        value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+      }
+    }
+    
+    setFormData((prev) => ({ ...prev, whatsapp: value }));
+  };
+
   const toggleServico = (servicoId) => {
     setFormData((prev) => {
       const servicos = prev.servicos.includes(servicoId)
@@ -52,10 +73,12 @@ const FormularioBWN = () => {
   const validateStep = () => {
     switch (step) {
       case 1:
+        // Remove formatação do WhatsApp para validar apenas números
+        const whatsappNumbers = formData.whatsapp.replace(/\D/g, '');
         return (
           formData.nomeEmpresa.trim() !== '' &&
           formData.nomeResponsavel.trim() !== '' &&
-          formData.whatsapp.trim() !== '' &&
+          whatsappNumbers.length === 11 &&
           formData.nicho.trim() !== ''
         );
       case 2:
@@ -221,10 +244,14 @@ const FormularioBWN = () => {
                       type="tel"
                       name="whatsapp"
                       value={formData.whatsapp}
-                      onChange={handleInputChange}
+                      onChange={handleWhatsAppChange}
+                      maxLength={15}
                       className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
                       placeholder="(71) 99999-9999"
                     />
+                    {formData.whatsapp && formData.whatsapp.replace(/\D/g, '').length !== 11 && (
+                      <p className="text-red-400 text-xs mt-1">Digite o DDD + 9 dígitos</p>
+                    )}
                   </div>
 
                   <div>
