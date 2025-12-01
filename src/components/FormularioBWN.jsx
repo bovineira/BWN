@@ -58,6 +58,13 @@ const FormularioBWN = () => {
     setFormData((prev) => ({ ...prev, whatsapp: value }));
   };
 
+  const handleNomeChange = (e) => {
+    let value = e.target.value;
+    // Remove números e caracteres especiais, mantém apenas letras (incluindo acentos), espaços e hífens
+    value = value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s-]/g, '');
+    setFormData((prev) => ({ ...prev, nomeResponsavel: value }));
+  };
+
   const toggleServico = (servicoId) => {
     setFormData((prev) => {
       const servicos = prev.servicos.includes(servicoId)
@@ -231,7 +238,7 @@ const FormularioBWN = () => {
                       type="text"
                       name="nomeResponsavel"
                       value={formData.nomeResponsavel}
-                      onChange={handleInputChange}
+                      onChange={handleNomeChange}
                       className="w-full px-4 py-3.5 glass-input rounded-xl focus:outline-none focus:border-bwn-orange focus:ring-2 focus:ring-bwn-orange/30 text-white placeholder-gray-500 transition-all duration-300 hover:border-gray-600"
                       placeholder="Seu nome completo"
                     />
