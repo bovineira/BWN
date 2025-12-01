@@ -451,6 +451,25 @@ const HomePage = () => {
               );
             })}
           </div>
+
+          {/* Botão CTA - Terceira Dobra */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex justify-center mt-12"
+          >
+            <motion.button
+              onClick={() => scrollToSection('formulario')}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold px-8 py-4 rounded-xl flex items-center gap-2 glow-orange hover:glow-orange-strong transition-all duration-300"
+            >
+              Descubra Como Podemos Ajudar
+              <ArrowRight size={20} />
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -506,6 +525,25 @@ const HomePage = () => {
                 </motion.div>
               ))}
             </div>
+
+            {/* Botão CTA - Quarta Dobra */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex justify-center mt-12"
+            >
+              <motion.button
+                onClick={() => scrollToSection('formulario')}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 85, 0, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-bwn-orange to-orange-500 text-black font-bold px-8 py-4 rounded-xl flex items-center gap-2 glow-orange hover:glow-orange-strong transition-all duration-300"
+              >
+                Agendar Consultoria Gratuita
+                <ArrowRight size={20} />
+              </motion.button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
