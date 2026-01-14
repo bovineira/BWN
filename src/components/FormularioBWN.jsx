@@ -257,7 +257,7 @@ const FormularioBWN = () => {
                   </h1>
                   <p className="text-gray-300 text-lg">
                     Junte-se às empresas que já faturaram mais de{' '}
-                    <span className="text-bwn-orange font-bold bg-gradient-to-r from-bwn-orange to-orange-400 bg-clip-text text-transparent">R$ 30k</span>{' '}
+                    <span className="text-bwn-orange font-bold bg-gradient-to-r from-bwn-orange to-orange-400 bg-clip-text text-transparent">R$ 500k</span>{' '}
                     conosco
                   </p>
                 </div>

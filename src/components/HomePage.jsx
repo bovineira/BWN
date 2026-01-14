@@ -635,7 +635,7 @@ const HomePage = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="glass-card rounded-2xl p-6 text-center border-white/10">
                     <Users className="text-bwn-orange mx-auto mb-3" size={40} />
-                    <div className="text-3xl font-bold text-white mb-1">30k+</div>
+                    <div className="text-3xl font-bold text-white mb-1">500k+</div>
                     <div className="text-gray-400 text-sm">Reais escalados</div>
                   </div>
                   <div className="glass-card rounded-2xl p-6 text-center border-white/10">
@@ -678,10 +678,10 @@ const HomePage = () => {
             className="glass-strong rounded-3xl p-8 md:p-12 text-center"
           >
             <div className="text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-bwn-orange to-orange-400 bg-clip-text text-transparent">
-              R$ 30k+
+              R$ 500k+
             </div>
             <p className="text-xl text-gray-300 mb-8">
-              Já escalamos mais de <span className="text-bwn-orange font-bold">30 mil reais</span> para nossos clientes
+              Já escalamos mais de <span className="text-bwn-orange font-bold">500 mil reais</span> para nossos clientes
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 mb-8">
               <div className="glass-card rounded-xl p-6 border-white/10">
