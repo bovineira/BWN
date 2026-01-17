@@ -54,13 +54,6 @@ const SetorImobiliario = () => {
       color: 'from-amber-500 to-orange-500',
     },
     {
-      id: 'tour',
-      nome: 'Tour Virtual 360°',
-      descricao: 'Fotos profissionais e tours virtuais que vendem o imóvel antes da visita',
-      icon: Camera,
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
       id: 'video',
       nome: 'Vídeos para Redes Sociais',
       descricao: 'Reels e vídeos profissionais que destacam os diferenciais dos imóveis',
@@ -577,4 +570,5 @@ const SetorImobiliario = () => {
 };
 
 export default SetorImobiliario;
+
 

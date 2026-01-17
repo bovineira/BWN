@@ -54,7 +54,7 @@ const SetorSaude = () => {
     },
     {
       id: 'agendamento',
-      nome: 'Sistema de Agendamento',
+      nome: 'Funil de Agendamento',
       descricao: 'Integração com WhatsApp e agenda online para mais consultas marcadas',
       icon: Calendar,
       color: 'from-blue-500 to-cyan-500',
@@ -576,4 +576,5 @@ const SetorSaude = () => {
 };
 
 export default SetorSaude;
+
 

@@ -74,13 +74,6 @@ const SetorDelivery = () => {
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      id: 'whatsapp',
-      nome: 'Automação WhatsApp',
-      descricao: 'Bot para pedidos, cardápio automático e confirmações',
-      icon: MessageCircle,
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
       id: 'fidelidade',
       nome: 'Programa de Fidelidade',
       descricao: 'Sistema de pontos e cupons para clientes voltarem sempre',
@@ -326,7 +319,7 @@ const SetorDelivery = () => {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 'Alta taxa cobrada pelos apps de delivery (até 30%)',
-                'Poucos pedidos diretos pelo WhatsApp',
+                'Depender muito do iFood e 99Food',
                 'Fotos do cardápio que não dão vontade de pedir',
                 'Dificuldade em fidelizar clientes',
                 'Avaliações ruins ou poucas avaliações',
@@ -641,4 +634,5 @@ const SetorDelivery = () => {
 };
 
 export default SetorDelivery;
+
 
