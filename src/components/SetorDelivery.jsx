@@ -319,7 +319,7 @@ const SetorDelivery = () => {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 'Alta taxa cobrada pelos apps de delivery (até 30%)',
-                'Depender muito do iFood e 99Food',
+                'Depender menos do iFood e 99Food',
                 'Fotos do cardápio que não dão vontade de pedir',
                 'Dificuldade em fidelizar clientes',
                 'Avaliações ruins ou poucas avaliações',
