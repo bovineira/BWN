@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ArrowRight, ArrowLeft, Sparkles, Loader2 } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft, Loader2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FormularioBWN = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -14,7 +16,7 @@ const FormularioBWN = () => {
     orcamento: '',
   });
 
-  const totalSteps = 4;
+  const totalSteps = 3;
 
   const servicos = [
     { id: 'trafego', nome: 'Tráfego Pago', icon: '📊' },
@@ -146,8 +148,8 @@ const FormularioBWN = () => {
       });
 
       if (response.ok) {
-        // Sucesso - avançar para etapa de sucesso
-        setStep(4);
+        // Sucesso - redirecionar para página de agradecimento
+        navigate('/obrigado');
       } else {
         // Erro na resposta
         const errorData = await response.json();
@@ -505,69 +507,6 @@ const FormularioBWN = () => {
               </motion.div>
             )}
 
-            {/* Etapa 4: Finalização */}
-            {step === 4 && (
-              <motion.div
-                key="step4"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="text-center space-y-6 py-8"
-              >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-                  className="flex justify-center mb-6"
-                >
-                  <div className="w-24 h-24 rounded-full glass-card border-bwn-orange/30 bg-bwn-orange/10 flex items-center justify-center glow-orange">
-                    <motion.div
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.4, type: 'spring', stiffness: 200 }}
-                    >
-                      <Check className="text-bwn-orange" size={48} strokeWidth={3} />
-                    </motion.div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                    Obrigado!
-                  </h2>
-                  <p className="text-gray-300 text-lg leading-relaxed max-w-md mx-auto">
-                    A BWN vai analisar o perfil da sua empresa e entraremos em
-                    contato via WhatsApp em breve para alavancar seus resultados.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="flex justify-center gap-2 mt-8"
-                >
-                  {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scale: 0, rotate: 0 }}
-                      animate={{ scale: 1, rotate: 360 }}
-                      transition={{
-                        delay: 0.6 + i * 0.1,
-                        type: 'spring',
-                        stiffness: 200,
-                      }}
-                    >
-                      <Sparkles className="text-bwn-orange" size={20} />
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            )}
           </AnimatePresence>
         </motion.div>
       </div>
