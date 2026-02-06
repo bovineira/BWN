@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const WHATSAPP_URL = 'https://wa.me/5571992091220';
 const BG_MOBILE = '/midia/bg-mobile-novo.webp';
-const BG_DESKTOP = '/midia/bg-desktop.webp';
+const BG_DESKTOP = '/midia/bg-desktop-novo.webp';
 
 function IconWhatsApp({ className = 'w-5 h-5' }) {
   return (
