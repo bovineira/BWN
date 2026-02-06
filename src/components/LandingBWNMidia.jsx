@@ -23,22 +23,18 @@ export default function LandingBWNMidia() {
         className="relative min-h-[100dvh] sm:min-h-screen flex flex-col justify-start md:justify-center"
         aria-label="Dobra principal"
       >
-        {/* DIV 1 – Background Mobile: visível só em telas pequenas, some em md+ */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 md:hidden"
-          style={{ backgroundImage: `url(${BG_MOBILE})` }}
-          role="img"
-          aria-hidden="true"
-        />
-        {/* DIV 2 – Background Desktop: oculto em telas pequenas, visível em md+ */}
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 hidden md:block"
-          style={{ backgroundImage: `url(${BG_DESKTOP})` }}
-          role="img"
-          aria-hidden="true"
-        />
+        {/* Background via <picture>: o navegador escolhe a imagem pelo media (desktop ≥768px, senão mobile) */}
+        <picture className="absolute inset-0 z-0 block w-full h-full" aria-hidden="true">
+          <source media="(min-width: 768px)" srcSet={BG_DESKTOP} />
+          <img
+            src={BG_MOBILE}
+            alt=""
+            className="block w-full h-full object-cover object-center"
+            fetchPriority="high"
+          />
+        </picture>
 
-        {/* Conteúdo: acima dos backgrounds (z-10); centralizado no mobile; no desktop à esquerda e no meio da altura */}
+        {/* Conteúdo: acima do background (z-10); centralizado no mobile; no desktop à esquerda e no meio da altura */}
         <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left pt-[clamp(2.5rem,10vw,5rem)] md:pt-0 px-4 pb-8 w-full max-w-2xl md:pl-[clamp(2rem,8vw,4rem)]">
           <motion.h1
             className="text-[1.25rem] leading-tight font-bold text-white drop-shadow-sm sm:text-[1.35rem] md:text-[1.4rem] uppercase tracking-tight"
