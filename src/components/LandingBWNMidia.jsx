@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 
 const WHATSAPP_URL = 'https://wa.me/5571992091220';
+const BG_MOBILE = '/midia/bg-mobile-novo.webp';
+const BG_DESKTOP = '/midia/bg-desktop.webp';
 
 function IconWhatsApp({ className = 'w-5 h-5' }) {
   return (
@@ -9,8 +11,6 @@ function IconWhatsApp({ className = 'w-5 h-5' }) {
     </svg>
   );
 }
-const BG_MOBILE = '/midia/bg-mobile-novo.webp';
-const BG_DESKTOP = '/midia/bg desktop.webp';
 
 export default function LandingBWNMidia() {
   return (
@@ -20,25 +20,26 @@ export default function LandingBWNMidia() {
     >
       {/* ========== 1. HERO SECTION ========== */}
       <section
-        className="relative min-h-[100dvh] sm:min-h-screen flex flex-col"
+        className="relative min-h-[100dvh] sm:min-h-screen flex flex-col justify-start md:justify-center"
         aria-label="Dobra principal"
       >
-        {/* Background: mobile até md, desktop a partir de md */}
+        {/* DIV 1 – Background Mobile: visível só em telas pequenas, some em md+ */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
-          style={{ backgroundImage: `url("${encodeURI(BG_MOBILE)}")` }}
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 md:hidden"
+          style={{ backgroundImage: `url(${BG_MOBILE})` }}
           role="img"
           aria-hidden="true"
         />
+        {/* DIV 2 – Background Desktop: oculto em telas pequenas, visível em md+ */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block"
-          style={{ backgroundImage: `url("${encodeURI(BG_DESKTOP)}")` }}
+          className="absolute inset-0 w-full h-full bg-cover bg-center z-0 hidden md:block"
+          style={{ backgroundImage: `url(${BG_DESKTOP})` }}
           role="img"
           aria-hidden="true"
         />
 
-        {/* Conteúdo: centralizado no mobile, à esquerda no desktop */}
-        <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left pt-[clamp(2.5rem,10vw,5rem)] px-4 pb-8 w-full max-w-2xl md:pl-[clamp(2rem,8vw,4rem)]">
+        {/* Conteúdo: acima dos backgrounds (z-10); centralizado no mobile; no desktop à esquerda e no meio da altura */}
+        <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left pt-[clamp(2.5rem,10vw,5rem)] md:pt-0 px-4 pb-8 w-full max-w-2xl md:pl-[clamp(2rem,8vw,4rem)]">
           <motion.h1
             className="text-[1.25rem] leading-tight font-bold text-white drop-shadow-sm sm:text-[1.35rem] md:text-[1.4rem] uppercase tracking-tight"
             initial={{ opacity: 0, y: 16 }}
