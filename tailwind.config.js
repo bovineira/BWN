@@ -14,6 +14,7 @@ export default {
       fontFamily: {
         sans: ['Cormorant Garamond', 'Georgia', 'serif'],
         inter: ['Inter', 'system-ui', 'sans-serif'],
+        poppins: ['Poppins', 'system-ui', 'sans-serif'],
       },
     },
   },

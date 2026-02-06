@@ -113,7 +113,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden font-poppins">
       {/* Header/Navbar Flutuante */}
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
