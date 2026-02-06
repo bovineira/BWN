@@ -12,7 +12,8 @@ export default {
         'bwn-dark': '#0a0a0a',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Cormorant Garamond', 'Georgia', 'serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },
