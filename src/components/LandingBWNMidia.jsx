@@ -23,9 +23,9 @@ export default function LandingBWNMidia() {
         className="relative min-h-[100dvh] sm:min-h-screen flex flex-col justify-start md:justify-center"
         aria-label="Dobra principal"
       >
-        {/* Background via <picture>: o navegador escolhe a imagem pelo media (desktop ≥768px, senão mobile) */}
+        {/* Background: <picture> com source para desktop (≥768px) e img para mobile; arquivo desktop precisa estar em public/midia */}
         <picture className="absolute inset-0 z-0 block w-full h-full" aria-hidden="true">
-          <source media="(min-width: 768px)" srcSet={BG_DESKTOP} />
+          <source media="(min-width: 768px)" srcSet="/midia/bg-desktop-novo.webp" />
           <img
             src={BG_MOBILE}
             alt=""
