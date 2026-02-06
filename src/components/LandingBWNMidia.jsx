@@ -14,7 +14,10 @@ const BG_DESKTOP = '/midia/bg desktop.webp';
 
 export default function LandingBWNMidia() {
   return (
-    <div className="min-h-screen bg-black text-white font-poppins antialiased">
+    <div
+      className="min-h-screen bg-black text-white antialiased"
+      style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 600 }}
+    >
       {/* ========== 1. HERO SECTION ========== */}
       <section
         className="relative min-h-[100dvh] sm:min-h-screen flex flex-col"
