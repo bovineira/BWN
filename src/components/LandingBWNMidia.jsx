@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
-const WHATSAPP_URL = 'https://wa.me/5571992091220';
+const WHATSAPP_MSG = 'Olá! Gostaria de entender como é a implementação da BWN no meu negócio';
+const WHATSAPP_URL = `https://wa.me/5571992091220?text=${encodeURIComponent(WHATSAPP_MSG)}`;
 const BG_MOBILE = '/midia/bg-mobile-novo.webp';
 const BG_DESKTOP = '/midia/bg-desktop-novo.webp';
 
