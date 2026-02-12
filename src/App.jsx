@@ -5,6 +5,7 @@ import SetorSaude from './components/SetorSaude';
 import SetorDelivery from './components/SetorDelivery';
 import ObrigadoPage from './components/ObrigadoPage';
 import LandingBWNMidia from './components/LandingBWNMidia';
+import AgendaDelivery from './components/AgendaDelivery';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/midia" element={<LandingBWNMidia />} />
+        <Route path="/agenda-delivery" element={<AgendaDelivery />} />
         <Route path="/imobiliario" element={<SetorImobiliario />} />
         <Route path="/saude" element={<SetorSaude />} />
         <Route path="/delivery" element={<SetorDelivery />} />
