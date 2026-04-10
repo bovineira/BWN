@@ -4,7 +4,7 @@ import { Check, Calendar, TrendingUp, Users, Target, ArrowDown, Clock } from 'lu
 import { startOfMonth, endOfMonth, eachDayOfInterval, format, isSameMonth, isSameDay, isPast, addDays, getDay, startOfWeek } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-const WHATSAPP_URL = 'https://wa.me/5571992091220?text=Ola,%20selecionei%20uma%20data%20na%20agenda%20e%20quero%20confirmar.';
+const WHATSAPP_URL = 'https://wa.me/5571993636428?text=Ola,%20selecionei%20uma%20data%20na%20agenda%20e%20quero%20confirmar.';
 
 function IconWhatsApp({ className = 'w-5 h-5' }) {
   return (
