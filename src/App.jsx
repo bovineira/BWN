@@ -1,19 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import SetorImobiliario from './components/SetorImobiliario';
 import SetorSaude from './components/SetorSaude';
 import SetorDelivery from './components/SetorDelivery';
 import ObrigadoPage from './components/ObrigadoPage';
 import LandingBWNMidia from './components/LandingBWNMidia';
 import AgendaDelivery from './components/AgendaDelivery';
+import AgenciaEmbed from './components/AgenciaEmbed';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Navigate to="/agencia" replace />} />
         <Route path="/midia" element={<LandingBWNMidia />} />
         <Route path="/agenda-delivery" element={<AgendaDelivery />} />
+        <Route path="/agencia" element={<AgenciaEmbed />} />
         <Route path="/imobiliario" element={<SetorImobiliario />} />
         <Route path="/saude" element={<SetorSaude />} />
         <Route path="/delivery" element={<SetorDelivery />} />
