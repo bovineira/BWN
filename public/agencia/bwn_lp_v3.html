@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- GTM só fora de iframe: no /agencia o shell (index.html) já carrega o mesmo container; aqui evita duplicar. Aberto em nova aba / depurador, o tag aparece. -->
+<!-- GTM neste documento: os links da LP estão aqui (às vezes dentro de iframe em /agencia). O GTM no shell React não vê cliques no iframe — este snippet é necessário para acionadores de clique em links. Em /agencia o pai não injeta GTM (GtmParentShell). -->
 <script>
-(function(w,d,s,l,i){
-  if (w.self !== w.top) return;
-  w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-  j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PWD74GDG');
 </script>
 

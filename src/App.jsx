@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import GtmParentShell from './components/GtmParentShell';
 import SetorImobiliario from './components/SetorImobiliario';
 import SetorSaude from './components/SetorSaude';
 import SetorDelivery from './components/SetorDelivery';
@@ -10,6 +11,7 @@ import AgenciaEmbed from './components/AgenciaEmbed';
 function App() {
   return (
     <Router>
+      <GtmParentShell />
       <Routes>
         <Route path="/" element={<Navigate to="/agencia" replace />} />
         <Route path="/midia" element={<LandingBWNMidia />} />
