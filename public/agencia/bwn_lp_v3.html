@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- GTM removido: quando esta LP é exibida dentro do site React (/agencia), o GTM já está no index.html. Evita duplicidade de tags. -->
+<!-- GTM só fora de iframe: no /agencia o shell (index.html) já carrega o mesmo container; aqui evita duplicar. Aberto em nova aba / depurador, o tag aparece. -->
+<script>
+(function(w,d,s,l,i){
+  if (w.self !== w.top) return;
+  w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PWD74GDG');
+</script>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -614,6 +622,7 @@
 </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWD74GDG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
