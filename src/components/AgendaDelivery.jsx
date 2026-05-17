@@ -98,7 +98,7 @@ export default function AgendaDelivery() {
         {/* Background effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
             animate={{
               x: [0, 100, 0],
               y: [0, 50, 0],
@@ -118,6 +118,14 @@ export default function AgendaDelivery() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          <motion.img
+            src="/agenda-delivery/logo-nova-png.png"
+            alt="BWN Mídia"
+            className="mx-auto h-9 w-auto max-w-[140px] md:h-11 md:max-w-[168px] object-contain object-center mb-7 opacity-[0.95]"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          />
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}
@@ -126,7 +134,7 @@ export default function AgendaDelivery() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             A Estratégia de Escala que Donos de Delivery usam para{' '}
-            <span className="text-green-500">Bater R$ 100k/mês com Lucro.</span>
+            <span className="text-blue-400 font-semibold">Bater R$ 100k/mês com Lucro.</span>
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-normal"
@@ -138,7 +146,7 @@ export default function AgendaDelivery() {
           </motion.p>
           <motion.button
             onClick={scrollToAgenda}
-            className="btn-green-shimmer btn-scale-pulse bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 mx-auto shadow-lg shadow-green-500/30 transition-all duration-300"
+            className="btn-agenda-blue-shimmer btn-agenda-blue-glow btn-scale-pulse bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 mx-auto shadow-lg shadow-blue-600/35 transition-all duration-300"
             style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -270,7 +278,7 @@ export default function AgendaDelivery() {
                 {/* Faturamento */}
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-zinc-700 font-normal">Faturamento</span>
-                  <span className="text-3xl font-bold text-green-500" style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}>
+                  <span className="text-3xl font-bold text-blue-600" style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}>
                     R$ {semana.faturamento.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
@@ -286,7 +294,7 @@ export default function AgendaDelivery() {
           >
             <motion.button
               onClick={scrollToAgenda}
-              className="btn-green-shimmer btn-scale-pulse bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 shadow-lg shadow-green-500/30 transition-all duration-300"
+              className="btn-agenda-blue-shimmer btn-agenda-blue-glow btn-scale-pulse bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 shadow-lg shadow-blue-600/35 transition-all duration-300"
               style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -326,7 +334,7 @@ export default function AgendaDelivery() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <Check className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
+                <Check className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
                 <span className="text-lg font-normal text-zinc-900">{item}</span>
               </motion.div>
             ))}
@@ -340,7 +348,7 @@ export default function AgendaDelivery() {
           >
             <motion.button
               onClick={scrollToAgenda}
-              className="btn-green-shimmer btn-scale-pulse bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 shadow-lg shadow-green-500/30 transition-all duration-300"
+              className="btn-agenda-blue-shimmer btn-agenda-blue-glow btn-scale-pulse bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 shadow-lg shadow-blue-600/35 transition-all duration-300"
               style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -379,7 +387,7 @@ export default function AgendaDelivery() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-white" />
                 </div>
                 <span className="text-lg font-normal text-zinc-900">{item}</span>
@@ -395,7 +403,7 @@ export default function AgendaDelivery() {
           >
             <motion.button
               onClick={scrollToAgenda}
-              className="btn-green-shimmer btn-scale-pulse bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 shadow-lg shadow-green-500/30 transition-all duration-300"
+              className="btn-agenda-blue-shimmer btn-agenda-blue-glow btn-scale-pulse bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-lg flex items-center gap-2 shadow-lg shadow-blue-600/35 transition-all duration-300"
               style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -462,7 +470,7 @@ export default function AgendaDelivery() {
                       ${isPastDay || !isCurrentMonth
                         ? 'text-zinc-300 cursor-not-allowed bg-zinc-50'
                         : isSelected
-                        ? 'bg-green-500 text-white scale-105 shadow-lg'
+                        ? 'bg-blue-600 text-white scale-105 shadow-lg shadow-blue-600/40'
                         : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200 hover:scale-105'
                       }
                     `}
@@ -551,7 +559,7 @@ export default function AgendaDelivery() {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp-shimmer btn-whatsapp-glow relative inline-flex items-center justify-center gap-3 w-full px-6 py-4 rounded-xl bg-green-500 hover:bg-green-600 text-white text-lg tracking-wide uppercase cursor-pointer transition-all duration-200"
+                    className="btn-agenda-blue-shimmer btn-agenda-blue-glow relative inline-flex items-center justify-center gap-3 w-full px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-lg tracking-wide uppercase cursor-pointer transition-all duration-200 shadow-lg shadow-blue-600/30"
                     style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700 }}
                   >
                     <IconWhatsApp className="w-6 h-6 flex-shrink-0" />
@@ -563,6 +571,27 @@ export default function AgendaDelivery() {
           </>
         )}
       </AnimatePresence>
+
+      <footer className="bg-black text-white border-t border-zinc-900">
+        <div className="max-w-4xl mx-auto px-4 py-12 flex flex-col items-center gap-5">
+          <img
+            src="/agenda-delivery/logo-nova-png.png"
+            alt="BWN Mídia"
+            className="h-9 w-auto max-w-[150px] md:h-10 object-contain opacity-90"
+          />
+          <p className="text-center text-xs sm:text-sm text-zinc-500 font-medium tracking-wide leading-relaxed max-w-md">
+            <span className="text-blue-400/90" aria-hidden="true">
+              ©
+            </span>
+            {' '}
+            <time dateTime="2026">2026</time>
+            <span className="mx-2 text-zinc-600 select-none" aria-hidden="true">
+              ·
+            </span>
+            Todos os direitos reservados
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

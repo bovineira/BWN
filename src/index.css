@@ -146,6 +146,36 @@ body {
   pointer-events: none;
 }
 
+/* Agenda delivery — botões e CTA azul marca */
+.btn-agenda-blue-glow {
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.35), 0 0 48px rgba(59, 130, 246, 0.15);
+}
+.btn-agenda-blue-glow:hover {
+  box-shadow: 0 0 32px rgba(59, 130, 246, 0.45), 0 0 64px rgba(59, 130, 246, 0.2);
+}
+.btn-agenda-blue-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-agenda-blue-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  animation: shimmer-slide 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
 /* Pulse de scale esporádico */
 @keyframes scale-pulse-sporadic {
   0%, 90%, 100% {
