@@ -1,0 +1,510 @@
+/* ============================================
+   BWN Mídia — Linktree Style
+   Paleta Azul + Fundo Preto
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* === VARIÁVEIS DA PALETA === */
+:root {
+  --abyss:       #040D1A;
+  --midnight:    #071527;
+  --deep-navy:   #0A1E38;
+  --navy:        #0E2647;
+  --steel-navy:  #112E56;
+  --slate-blue:  #153764;
+  --ocean:       #1A4275;
+  --denim:       #1F4E87;
+  --corporate:   #235A99;
+  --mid-blue:    #2B6CB0;
+  --powder:      #4A90D9;   /* acento principal */
+  --mist:        #7AB3E8;   /* textos secundários */
+
+  --bg:          #000000;
+  --surface:     #0A0F1A;
+  --card-bg:     rgba(10, 30, 56, 0.35);
+  --card-border: rgba(74, 144, 217, 0.15);
+  --text-main:   #EEF4FF;
+  --text-sub:    #7AB3E8;
+
+  --glow:        rgba(74, 144, 217, 0.35);
+  --glow-soft:   rgba(74, 144, 217, 0.1);
+}
+
+/* === RESET & BASE === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* === BACKGROUND EFEITO === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(43, 108, 176, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 90%, rgba(26, 66, 117, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grade sutil */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(74, 144, 217, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 144, 217, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === CONTAINER PRINCIPAL === */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 48px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* === LOGO / AVATAR === */
+.profile-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 24px;
+  background: linear-gradient(150deg, var(--deep-navy) 0%, var(--midnight) 100%);
+  border: 1.5px solid rgba(74, 144, 217, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 7px rgba(74, 144, 217, 0.05),
+    0 0 36px rgba(74, 144, 217, 0.16),
+    0 10px 30px rgba(0, 0, 0, 0.55);
+  margin-bottom: 22px;
+  animation: logoReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transition: box-shadow 0.4s ease;
+}
+
+/* Tipografia da logo */
+.logo-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  user-select: none;
+}
+
+.logo-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.85rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: baseline;
+}
+
+.logo-bw {
+  color: #FFFFFF;
+}
+
+.logo-n {
+  color: #4A90D9;
+  /* Leve kerning extra para o N respirar após o W */
+  margin-left: 0.01em;
+}
+
+.logo-descriptor {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.52rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mist);
+  opacity: 0.75;
+  /* Empurra ligeiramente para compensar o tracking */
+  padding-left: 0.28em;
+}
+
+/* === NOME / BIO === */
+.profile-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+  margin-bottom: 8px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.profile-bio {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--mist);
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin-bottom: 36px;
+  max-width: 280px;
+  line-height: 1.5;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+/* === LINKS === */
+.links-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  text-decoration: none;
+  color: var(--text-main);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.975rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Brilho animado no hover */
+.link-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(74, 144, 217, 0.08) 60%, transparent 80%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.link-btn:hover::before {
+  transform: translateX(100%);
+}
+
+.link-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(74, 144, 217, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(74, 144, 217, 0.15),
+    0 8px 32px rgba(74, 144, 217, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  background: rgba(15, 40, 75, 0.55);
+}
+
+.link-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* Ícone do botão */
+.link-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--ocean) 0%, var(--denim) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(31, 78, 135, 0.4);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.link-btn:hover .link-icon {
+  background: linear-gradient(135deg, var(--denim) 0%, var(--corporate) 100%);
+  box-shadow: 0 4px 16px rgba(74, 144, 217, 0.35);
+}
+
+.link-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--powder);
+}
+
+.link-label {
+  flex: 1;
+}
+
+.link-arrow {
+  color: var(--slate-blue);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.link-btn:hover .link-arrow {
+  color: var(--powder);
+  transform: translateX(3px);
+}
+
+/* Animação de entrada para cada botão */
+.link-btn:nth-child(1) { animation: fadeUp 0.5s 0.3s ease both; }
+.link-btn:nth-child(2) { animation: fadeUp 0.5s 0.4s ease both; }
+.link-btn:nth-child(3) { animation: fadeUp 0.5s 0.5s ease both; }
+.link-btn:nth-child(4) { animation: fadeUp 0.5s 0.6s ease both; }
+.link-btn:nth-child(5) { animation: fadeUp 0.5s 0.7s ease both; }
+
+/* === REDES SOCIAIS === */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.5s 0.8s ease both;
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(14, 38, 71, 0.5);
+  border: 1px solid rgba(74, 144, 217, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--mist);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.social-btn:hover {
+  background: rgba(31, 78, 135, 0.5);
+  border-color: rgba(74, 144, 217, 0.4);
+  color: var(--powder);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74, 144, 217, 0.2);
+}
+
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* === FOOTER === */
+.page-footer {
+  font-size: 0.72rem;
+  color: var(--slate-blue);
+  letter-spacing: 0.03em;
+  text-align: center;
+  animation: fadeUp 0.5s 0.9s ease both;
+}
+
+/* === BADGE "POWERED" === */
+.powered-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.68rem;
+  color: var(--ocean);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.powered-badge span {
+  color: var(--powder);
+  font-weight: 600;
+}
+
+/* === DIVISOR === */
+.divider {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ocean), transparent);
+  margin: 0 auto 28px;
+  border-radius: 2px;
+  animation: fadeUp 0.5s 0.25s ease both;
+}
+
+/* === ANIMAÇÕES === */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.75) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 400px) {
+  .page-wrapper {
+    padding: 40px 18px 32px;
+  }
+
+  .profile-name {
+    font-size: 1.45rem;
+  }
+}
+
+/* ============================================
+   TICKER — Faixa em loop horizontal
+   ============================================ */
+
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  overflow: hidden;
+
+  /* Faixa com borda superior azul neon + fundo escuro translúcido */
+  background: linear-gradient(
+    to right,
+    rgba(4, 13, 26, 0.97) 0%,
+    rgba(7, 21, 39, 0.97) 100%
+  );
+  border-top: 1px solid rgba(74, 144, 217, 0.3);
+
+  /* Glow sutil na borda */
+  box-shadow:
+    0 -1px 0 rgba(74, 144, 217, 0.15),
+    0 -8px 32px rgba(74, 144, 217, 0.07);
+
+  padding: 10px 0;
+
+  /* Fade nas laterais — "saída" do texto */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+/* Faixa interna que se move */
+.ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: tickerScroll 28s linear infinite;
+  gap: 0;
+}
+
+/* Pausa ao hover */
+.ticker-wrap:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* Cada item de texto */
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 40px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  white-space: nowrap;
+
+  /* Separador vertical entre itens */
+  border-right: 1px solid rgba(74, 144, 217, 0.12);
+}
+
+/* Diamante separador — acento em azul */
+.ticker-diamond {
+  color: var(--powder);
+  font-size: 0.5rem;
+  line-height: 1;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* Palavra "receita" em destaque dentro do ticker */
+.ticker-item em {
+  font-style: normal;
+  color: var(--powder);
+  font-weight: 700;
+}
+
+/* Keyframe da animação de scroll */
+@keyframes tickerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Espaço no rodapé do page-wrapper para não ficar sob o ticker */
+.page-wrapper {
+  padding-bottom: 72px;
+}
+
+/* Responsivo: ticker um pouco menor em telas pequenas */
+@media (max-width: 400px) {
+  .ticker-item {
+    font-size: 0.65rem;
+    padding: 0 28px;
+    letter-spacing: 0.08em;
+  }
+}

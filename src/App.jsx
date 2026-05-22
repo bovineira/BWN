@@ -10,6 +10,7 @@ import AgenciaEmbed from './components/AgenciaEmbed';
 import FormDeliveryEmbed from './components/FormDeliveryEmbed';
 import FormClinicaEmbed from './components/FormClinicaEmbed';
 import ApresentacaoComercial from './components/ApresentacaoComercial';
+import LinktreeEmbed from './components/LinktreeEmbed';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/form-delivery" element={<FormDeliveryEmbed />} />
         <Route path="/form-clinica" element={<FormClinicaEmbed />} />
         <Route path="/apresentacao-comercial" element={<ApresentacaoComercial />} />
+        <Route path="/linktree" element={<LinktreeEmbed />} />
         <Route path="/imobiliario" element={<SetorImobiliario />} />
         <Route path="/saude" element={<SetorSaude />} />
         <Route path="/delivery" element={<SetorDelivery />} />
