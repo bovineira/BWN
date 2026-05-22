@@ -1,0 +1,333 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #FFFFFF;
+  --bg-alt:      #4A90D9;
+  --text:        #111111;
+  --text-muted:  #555555;
+  --btn-bg:      #122954;
+  --btn-hover:   #0d1f3e;
+  --btn-text:    #ffffff;
+  --option-bg:   #F0F0F0;
+  --option-border-hover: #122954;
+  --font: 'Inter', sans-serif;
+}
+
+/* ── Fundo alternado ── */
+html, body {
+  height: 100%;
+  transition: background-color 0.5s ease;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 2rem 1.5rem;
+}
+
+body.bg-alt {
+  background: var(--bg-alt);
+}
+
+/* ── Wrapper central ── */
+.screen {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.55s ease forwards;
+}
+
+.screen.hidden { display: none !important; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo ── */
+.logo {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.brand {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* ── Texto principal ── */
+.welcome-text {
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  line-height: 1.75;
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ── Botão principal ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 500;
+  min-height: 48px;
+  padding: 0 1.75rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.18s, transform 0.12s;
+  text-decoration: none;
+}
+
+.btn-primary:hover  { background: var(--btn-hover); }
+.btn-primary:active { transform: scale(0.97); }
+
+/* ── Gatilhos abaixo do botão ── */
+.trust-signals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -0.75rem;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.trust-icon { font-size: 0.9rem; flex-shrink: 0; }
+
+.trust-item strong { font-weight: 600; }
+
+/* ── Barra de progresso ── */
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--btn-bg);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+/* Na tela azul a barra de progresso fica branca */
+body.bg-alt .progress-fill { background: #ffffff; }
+
+/* ── Número da pergunta ── */
+.question-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--btn-bg);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+/* Na tela azul o número fica branco com fundo escuro */
+body.bg-alt .question-num {
+  background: rgba(0,0,0,0.25);
+}
+
+/* ── Enunciado ── */
+.question-text {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── Opções de múltipla escolha ── */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 1rem;
+  min-height: 52px;
+  background: var(--option-bg);
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--text);
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Opções sobre fundo azul ficam brancas */
+body.bg-alt .option-btn {
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--text);
+}
+
+.option-btn:hover,
+.option-btn.selected {
+  border-color: var(--btn-bg);
+  background: #dce6f5;
+}
+
+body.bg-alt .option-btn:hover,
+body.bg-alt .option-btn.selected {
+  border-color: var(--btn-bg);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.option-btn:active { transform: scale(0.985); }
+
+.option-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid rgba(0,0,0,0.25);
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(0,0,0,0.4);
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.option-btn:hover .option-key,
+.option-btn.selected .option-key {
+  background: var(--btn-bg);
+  border-color: var(--btn-bg);
+  color: #fff;
+}
+
+/* ── Tela de encerramento ── */
+.goodbye-icon  { font-size: 2.5rem; }
+
+.goodbye-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.goodbye-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #444;
+}
+
+/* ── Input de texto livre ── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.text-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: 400;
+  padding: 0.4rem 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+  caret-color: var(--btn-bg);
+}
+
+.text-input::placeholder { color: rgba(0, 0, 0, 0.25); }
+.text-input:focus         { border-color: var(--btn-bg); }
+
+/* Na tela azul o input adapta */
+body.bg-alt .text-input {
+  border-bottom-color: rgba(0, 0, 0, 0.3);
+  color: var(--text);
+}
+
+body.bg-alt .text-input::placeholder { color: rgba(0, 0, 0, 0.3); }
+body.bg-alt .text-input:focus        { border-color: var(--btn-bg); }
+
+.input-hint {
+  font-size: 0.78rem;
+  color: #c0392b;
+  margin: 0;
+}
+
+.input-hint.hidden { display: none; }
+
+/* Botão desabilitado */
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.input-tip {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: -0.75rem;
+}
+
+body.bg-alt .input-tip { color: rgba(0, 0, 0, 0.5); }
+
+/* ── Spinner de carregamento ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.btn-primary.loading {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Responsividade extra ── */
+@media (max-width: 360px) {
+  body            { padding: 1.25rem 1rem; }
+  .welcome-text   { font-size: 1rem; }
+  .btn-primary    { font-size: 0.9rem; }
+}

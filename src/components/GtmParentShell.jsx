@@ -21,7 +21,7 @@ export default function GtmParentShell() {
     };
 
     // "/" só redireciona para /agencia — não injetar GTM no pai (LP está no iframe).
-    const noParentGtm = pathname === '/agencia' || pathname === '/form-delivery' || pathname === '/';
+    const noParentGtm = pathname === '/agencia' || pathname === '/form-delivery' || pathname === '/form-clinica' || pathname === '/';
     if (noParentGtm) {
       removeParentGtm();
       return;

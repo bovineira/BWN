@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BWN – Funil Clínica Médica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/form-clinica/css/styles.css" />
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1437957954556131');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1437957954556131&ev=PageView&noscript=1"
+      alt="" />
+  </noscript>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       PÁGINA 1 — Boas-vindas
+  ══════════════════════════════════ -->
+  <div class="screen" id="screen-welcome" style="flex-direction:column; gap:2rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <p class="welcome-text">
+      Olá! Aqui é o Carlos, da BWN. Em menos de 2 minutos, vou entender o 
+      momento da sua clínica ou consultório e ver se faz sentido a gente 
+      conversar sobre como atrair mais pacientes — sem depender só de 
+      indicação ou convênio. Bora começar?
+    </p>
+
+    <button class="btn-primary" onclick="comecar()">
+      Tenho interesse &rarr;
+    </button>
+
+    <div class="trust-signals">
+      <div class="trust-item">
+        <span class="trust-icon">⏱</span>
+        <span>Leva <strong>menos de 2 minutos</strong> para preencher</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">🗓</span>
+        <span id="escassez">Só restam <strong>2 horários disponíveis</strong> esta semana</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 2 — Pergunta 1
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p2" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 20%"></div>
+    </div>
+
+    <span class="question-num">1</span>
+
+    <p class="question-text">Sua clínica ou consultório já está em operação com pacientes sendo atendidos?</p>
+
+    <div class="options-list">
+      <button class="option-btn" onclick="responderP2('A', this)">
+        <span class="option-key">A</span>
+        Sim, já estou atendendo
+      </button>
+      <button class="option-btn" onclick="responderP2('B', this)">
+        <span class="option-key">B</span>
+        Ainda não
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       ENCERRAMENTO 1 — Ainda não opera
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-goodbye" style="flex-direction:column; gap:1.5rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <span class="goodbye-icon">🙏</span>
+    <p class="goodbye-title">Obrigado pelo interesse na BWN!</p>
+    <p class="goodbye-text">
+      Por enquanto trabalhamos com clínicas e consultórios que já estão em 
+      operação. Quando isso mudar, será um prazer conversar. Sucesso!
+    </p>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 3 — Pergunta 2
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p3" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 40%"></div>
+    </div>
+
+    <span class="question-num">2</span>
+
+    <p class="question-text">Qual é o faturamento médio mensal da sua clínica ou consultório?</p>
+
+    <div class="options-list">
+      <button class="option-btn" onclick="responderP3('A', this)">
+        <span class="option-key">A</span>
+        Até R$ 15.000
+      </button>
+      <button class="option-btn" onclick="responderP3('B', this)">
+        <span class="option-key">B</span>
+        Entre R$ 15.000 e R$ 60.000
+      </button>
+      <button class="option-btn" onclick="responderP3('C', this)">
+        <span class="option-key">C</span>
+        Acima de R$ 60.000
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       ENCERRAMENTO 2 — Sem fit
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-goodbye-2" style="flex-direction:column; gap:1.5rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <span class="goodbye-icon">👋</span>
+    <p class="goodbye-title">Sem problema!</p>
+    <p class="goodbye-text">
+      As portas da BWN ficam abertas. Quando estiver pronto para crescer, 
+      é só nos chamar. Até breve!
+    </p>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 4 — Pergunta 3
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p4" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 55%"></div>
+    </div>
+
+    <span class="question-num">3</span>
+
+    <p class="question-text">Qual é o seu maior gargalo hoje?</p>
+
+    <div class="options-list">
+      <button class="option-btn" onclick="responderP4(this)">
+        <span class="option-key">A</span>
+        Poucos pacientes novos chegando
+      </button>
+      <button class="option-btn" onclick="responderP4(this)">
+        <span class="option-key">B</span>
+        Agenda com horários ociosos
+      </button>
+      <button class="option-btn" onclick="responderP4(this)">
+        <span class="option-key">C</span>
+        Não tenho presença digital estruturada (site, redes, Google)
+      </button>
+      <button class="option-btn" onclick="responderP4(this)">
+        <span class="option-key">D</span>
+        Pacientes chegam mas não retornam nem indicam
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 5 — Pergunta 4
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p5" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 70%"></div>
+    </div>
+
+    <span class="question-num">4</span>
+
+    <p class="question-text">Nossa assessoria para estruturar o marketing da sua clínica começa em R$ 2.000/mês + verba de anúncios. Faz sentido para o seu momento?</p>
+
+    <div class="options-list">
+      <button class="option-btn" onclick="responderP5('A', this)">
+        <span class="option-key">A</span>
+        Sim, quero atrair mais pacientes para minha clínica
+      </button>
+      <button class="option-btn" onclick="responderP5('B', this)">
+        <span class="option-key">B</span>
+        Não está no meu momento agora
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 6 — Nome completo
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p6" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 80%"></div>
+    </div>
+
+    <span class="question-num">5</span>
+
+    <p class="question-text">Qual é o seu nome completo?</p>
+
+    <div class="input-group">
+      <input
+        type="text"
+        id="input-nome"
+        class="text-input"
+        placeholder="Digite seu nome completo…"
+        autocomplete="name"
+        oninput="validarInput('input-nome', 'btn-p6')"
+        onkeydown="if(event.key==='Enter') avancarP6()"
+      />
+      <p class="input-hint hidden" id="hint-nome">Por favor, preencha seu nome.</p>
+    </div>
+
+    <button class="btn-primary" id="btn-p6" onclick="avancarP6()" disabled>
+      Continuar &rarr;
+    </button>
+    <p class="input-tip">Pressione <strong>Enter</strong> para avançar</p>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 7 — Nome da clínica
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p7" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 88%"></div>
+    </div>
+
+    <span class="question-num">6</span>
+
+    <p class="question-text">Qual é o nome da sua clínica ou consultório?</p>
+
+    <div class="input-group">
+      <input
+        type="text"
+        id="input-clinica"
+        class="text-input"
+        placeholder="Ex: Clínica Saúde Plena, Dr. Silva…"
+        autocomplete="organization"
+        oninput="validarInput('input-clinica', 'btn-p7')"
+        onkeydown="if(event.key==='Enter') avancarP7()"
+      />
+      <p class="input-hint hidden" id="hint-clinica">Por favor, preencha o nome da clínica.</p>
+    </div>
+
+    <button class="btn-primary" id="btn-p7" onclick="avancarP7()" disabled>
+      Continuar &rarr;
+    </button>
+    <p class="input-tip">Pressione <strong>Enter</strong> para avançar</p>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 8 — Telefone
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p8" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 94%"></div>
+    </div>
+
+    <span class="question-num">7</span>
+
+    <p class="question-text">Qual é o seu número de contato com DDD?</p>
+
+    <div class="input-group">
+      <input
+        type="tel"
+        id="input-telefone"
+        class="text-input"
+        placeholder="(11) 99999-9999"
+        autocomplete="tel"
+        maxlength="15"
+        oninput="mascaraTelefone(this)"
+        onkeydown="if(event.key==='Enter') avancarP8()"
+      />
+      <p class="input-hint hidden" id="hint-telefone">Por favor, informe um número válido com DDD.</p>
+    </div>
+
+    <button class="btn-primary" id="btn-p8" onclick="avancarP8()" disabled>
+      Continuar &rarr;
+    </button>
+    <p class="input-tip">Pressione <strong>Enter</strong> para avançar</p>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA 9 — Cidade
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-p9" style="flex-direction:column; gap:1.75rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 100%"></div>
+    </div>
+
+    <span class="question-num">8</span>
+
+    <p class="question-text">Qual é a sua cidade?</p>
+
+    <div class="input-group">
+      <input
+        type="text"
+        id="input-cidade"
+        class="text-input"
+        placeholder="Ex: São Paulo, Fortaleza…"
+        autocomplete="address-level2"
+        oninput="validarInput('input-cidade', 'btn-p9')"
+        onkeydown="if(event.key==='Enter') avancarP9()"
+      />
+      <p class="input-hint hidden" id="hint-cidade">Por favor, informe sua cidade.</p>
+    </div>
+
+    <button class="btn-primary" id="btn-p9" onclick="avancarP9()" disabled>
+      Enviar &rarr;
+    </button>
+    <p class="input-tip">Pressione <strong>Enter</strong> para avançar</p>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       PÁGINA FINAL — Confirmação
+  ══════════════════════════════════ -->
+  <div class="screen hidden" id="screen-final" style="flex-direction:column; gap:1.5rem;">
+
+    <img
+      src="/form-clinica/assets/logo.png"
+      alt="BWN"
+      class="logo"
+      onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand',textContent:'BWN'}))"
+    />
+
+    <span class="goodbye-icon">🎉</span>
+    <p class="goodbye-title" id="final-titulo">Ótimo!</p>
+    <p class="goodbye-text">
+      Nosso time já vai entrar em contato contigo para que a gente marque 
+      a primeira apresentação.
+    </p>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('LZgXdWyDd0Tl0_0n1');</script>
+  <script src="/form-clinica/js/funil.js"></script>
+
+</body>
+</html>

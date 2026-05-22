@@ -8,6 +8,7 @@ import LandingBWNMidia from './components/LandingBWNMidia';
 import AgendaDelivery from './components/AgendaDelivery';
 import AgenciaEmbed from './components/AgenciaEmbed';
 import FormDeliveryEmbed from './components/FormDeliveryEmbed';
+import FormClinicaEmbed from './components/FormClinicaEmbed';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/agenda-delivery" element={<AgendaDelivery />} />
         <Route path="/agencia" element={<AgenciaEmbed />} />
         <Route path="/form-delivery" element={<FormDeliveryEmbed />} />
+        <Route path="/form-clinica" element={<FormClinicaEmbed />} />
         <Route path="/imobiliario" element={<SetorImobiliario />} />
         <Route path="/saude" element={<SetorSaude />} />
         <Route path="/delivery" element={<SetorDelivery />} />
