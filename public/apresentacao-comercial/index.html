@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#071527" />
+  <title>Apresentação Comercial · BWN Mídia</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      background: #071527;
+      min-height: 100dvh;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    #loading, #error {
+      color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+      padding: 2.5rem 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    #error { display: none; color: #fca5a5; }
+    #error a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #fff;
+      text-decoration: underline;
+    }
+    #viewer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 8px calc(24px + env(safe-area-inset-bottom));
+    }
+    .page {
+      width: 100%;
+      max-width: 920px;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .page canvas {
+      display: block;
+      width: 100% !important;
+      height: auto !important;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <p id="loading">Carregando apresentação…</p>
+  <p id="error">
+    Não foi possível abrir a apresentação aqui.
+    <br />
+    <a id="pdf-fallback" href="/apresentacao-comercial/apresentacao-comercial.pdf" target="_blank" rel="noopener">
+      Abrir PDF em nova aba
+    </a>
+  </p>
+  <div id="viewer" hidden></div>
+
+  <script>
+    (function () {
+      var PDF_URL = '/apresentacao-comercial/apresentacao-comercial.pdf';
+      var loadingEl = document.getElementById('loading');
+      var errorEl = document.getElementById('error');
+      var viewerEl = document.getElementById('viewer');
+
+      if (!window['pdfjsLib']) {
+        loadingEl.style.display = 'none';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      function pageScale(page) {
+        var base = page.getViewport({ scale: 1 });
+        var maxWidth = Math.min(window.innerWidth - 16, 920);
+        return maxWidth / base.width;
+      }
+
+      function renderPage(pdf, pageNumber) {
+        return pdf.getPage(pageNumber).then(function (page) {
+          var scale = pageScale(page);
+          var viewport = page.getViewport({ scale: scale });
+          var wrap = document.createElement('div');
+          wrap.className = 'page';
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d');
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          wrap.appendChild(canvas);
+          viewerEl.appendChild(wrap);
+          return page.render({ canvasContext: ctx, viewport: viewport }).promise;
+        });
+      }
+
+      pdfjsLib.getDocument(PDF_URL).promise
+        .then(function (pdf) {
+          loadingEl.style.display = 'none';
+          viewerEl.hidden = false;
+          var chain = Promise.resolve();
+          for (var i = 1; i <= pdf.numPages; i++) {
+            (function (n) {
+              chain = chain.then(function () { return renderPage(pdf, n); });
+            })(i);
+          }
+          return chain;
+        })
+        .catch(function () {
+          loadingEl.style.display = 'none';
+          errorEl.style.display = 'block';
+        });
+    })();
+  </script>
+</body>
+</html>
