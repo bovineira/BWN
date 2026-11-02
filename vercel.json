@@ -9,6 +9,18 @@
       "destination": "/apresentacao-comercial/index.html"
     },
     {
+      "source": "/bovireportads",
+      "destination": "/bovireportads/index.html"
+    },
+    {
+      "source": "/bovireportads-politicas-de-privacidade",
+      "destination": "/bovireportads/privacidade.html"
+    },
+    {
+      "source": "/bovireportads-termos-de-servico",
+      "destination": "/bovireportads/termos.html"
+    },
+    {
       "source": "/((?!.*\\..*).*)",
       "destination": "/index.html"
     }
