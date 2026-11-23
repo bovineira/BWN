@@ -21,6 +21,18 @@
       "destination": "/bovireportads/termos.html"
     },
     {
+      "source": "/bwnlabs",
+      "destination": "/bwnlabs/index.html"
+    },
+    {
+      "source": "/bwnlabs-politicas-de-privacidade",
+      "destination": "/bwnlabs/privacidade.html"
+    },
+    {
+      "source": "/bwnlabs-termos-de-servico",
+      "destination": "/bwnlabs/termos.html"
+    },
+    {
       "source": "/((?!.*\\..*).*)",
       "destination": "/index.html"
     }
